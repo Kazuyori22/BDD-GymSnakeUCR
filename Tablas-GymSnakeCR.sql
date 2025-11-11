@@ -58,7 +58,7 @@ create table MedidaCorporal(
 );
 
 create table CitaMedicion(
-	idCita int primary key,
+	idCita INT IDENTITY(1,1) PRIMARY KEY,
 	cedulaCliente int FOREIGN KEY REFERENCES Cliente(cedulaCliente),
 	cedulaEntrenador int FOREIGN KEY REFERENCES Entrenador(cedulaEntrenador),
 	fecha date not null,
