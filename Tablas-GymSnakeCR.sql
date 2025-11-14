@@ -48,14 +48,15 @@ create table Rutina(
 	fechaVencimiento date not null
 );
 
-create table MedidaCorporal(
-	idMedidaCorporal int primary key,
-	cedulaCliente int FOREIGN KEY REFERENCES Cliente(cedulaCliente),
-	altura float null,
-	peso float null,
-	fechaCreacion date not null,
-	rutaArchivoMedida varchar(255) not null
+CREATE TABLE MedidaCorporal (
+    idMedidaCorporal INT IDENTITY(1,1) PRIMARY KEY,
+    cedulaCliente INT NOT NULL,
+    altura DECIMAL(6,2) NOT NULL,
+    peso DECIMAL(5,2) NOT NULL,
+    fechaCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+    rutaArchivoMedida NVARCHAR(300) NOT NULL
 );
+
 
 create table CitaMedicion(
 	idCita INT IDENTITY(1,1) PRIMARY KEY,
