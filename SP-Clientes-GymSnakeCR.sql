@@ -281,59 +281,6 @@ END
 ALTER TABLE Cliente
 ALTER COLUMN contrasenia VARCHAR(255);
 
-
-
-
-CREATE PROCEDURE InsertCliente
-    @CedulaCliente INT,
-    @Nombre VARCHAR(30),
-    @PrimerApellido VARCHAR(30),
-    @SegundoApellido VARCHAR(30) = NULL,
-    @FechaNacimiento DATE = NULL,
-    @Correo VARCHAR(100) = NULL,
-	@Contrasenia VARCHAR(255),
-    @Telefono VARCHAR(20) = NULL,
-    @RutaFotoCliente VARCHAR(255) = NULL
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    BEGIN TRY
-        INSERT INTO Cliente (
-            cedulaCliente,
-            nombre,
-            primerApellido,
-            segundoApellido,
-            fechaNacimiento,
-            correo,
-			contrasenia,
-            telefono,
-            fechaRegistro,
-            rutaFotoCliente
-        )
-        VALUES (
-            @CedulaCliente,
-            @Nombre,
-            @PrimerApellido,
-            @SegundoApellido,
-            @FechaNacimiento,
-            @Correo,
-			@Contrasenia,
-            @Telefono,
-            GETDATE(), -- FechaRegistro automática
-            @RutaFotoCliente
-        );
-
-        -- Retornar 1 = éxito
-        SELECT CAST(1 AS BIT) AS Resultado;
-    END TRY
-    BEGIN CATCH
-        -- Retornar 0 = error (por ejemplo, cedula duplicada)
-        SELECT CAST(0 AS BIT) AS Resultado;
-    END CATCH
-END
-GO
-
 DROP PROCEDURE InsertCliente
 DROP PROCEDURE UpdateCliente
 --Eliminar esos 2 procedimietos y volver a correrlos (Ya están actualizados) Gracias
