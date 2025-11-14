@@ -9,7 +9,7 @@ CREATE TABLE Cliente (
     segundoApellido VARCHAR(30) NULL,
     fechaNacimiento DATE NULL,
     correo VARCHAR(100) NULL,
-	contrasenia VARCHAR(50),
+	contrasenia VARCHAR(255),
     telefono VARCHAR(20) NULL,
     fechaRegistro DATE NOT NULL DEFAULT GETDATE(),
     rutaFotoCliente VARCHAR(255) NULL
