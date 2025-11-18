@@ -1,11 +1,34 @@
 ---------------------------------PROCEDIMIENTOS ALMACENADOS ENTRENADOR-------------------------------------------------------------------------
 --------------------------------------------INSERTAR-------------------------------------------------------------------------------------------
-Create procedure spRegistrarEntrenador @cedulaEntrenador int,@nombre varchar(30),@primerApellido varchar(30),
-				@segundoApellido varchar(30),@especialidad varchar(30),@correo varchar(30),@telefono int
+Create procedure spRegistrarEntrenador 
+                    @cedulaEntrenador int,
+                    @nombre varchar(30),
+                    @primerApellido varchar(30),
+				    @segundoApellido varchar(30),
+                    @especialidad varchar(30),
+                    @correo varchar(30),
+                    @telefono int,
+                    @fotoRuta varchar(300)
 as
 begin
-	insert into Entrenador(cedulaEntrenador,nombre,primerApellido,segundoApellido,especialidad,correo,telefono)
-		values(@cedulaEntrenador,@nombre,@primerApellido,@segundoApellido,@especialidad,@correo,@telefono);
+	insert into Entrenador(
+                    cedulaEntrenador,
+                    nombre,
+                    primerApellido,
+                    segundoApellido,
+                    especialidad,
+                    correo,
+                    telefono,
+                    fotoRuta)
+		        values(
+                    @cedulaEntrenador,
+                    @nombre,
+                    @primerApellido,
+                    @segundoApellido,
+                    @especialidad,
+                    @correo,
+                    @telefono,
+                    @fotoRuta);
 end;
 
 -------------------------------------------ACTUALIZAR-------------------------------------------------------------------------------------------

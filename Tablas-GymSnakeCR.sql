@@ -16,16 +16,16 @@ CREATE TABLE Cliente (
 );
 
 create table Entrenador(
-	idEntrenador INT IDENTITY(1,1),
-	cedulaEntrenador INT PRIMARY KEY,
+	idEntrenador INT IDENTITY(1,1) PRIMARY KEY,
+	cedulaEntrenador INT UNIQUE NOT NULL,
 	nombre varchar(30) NOT NULL,
 	primerApellido varchar(30) NOT NULL,
 	segundoApellido varchar(30) NULL,
 	especialidad varchar(30) NULL,
 	correo varchar(30) NOT NULL,
-	telefono int NOT NULL
+	telefono int NOT NULL,
+    fotoRuta VARCHAR(300) NULL
 );
-
 create table Membresia(
 	idMembresia int primary key,
 	cedulaCliente int FOREIGN KEY REFERENCES Cliente(cedulaCliente),
@@ -37,7 +37,7 @@ create table Membresia(
 );
 
 create table Rutina(
-	idRutina int primary key,
+	idRutina int IDENTITY primary key,
 	cedulaEntrenador int FOREIGN KEY REFERENCES Entrenador(cedulaEntrenador),
 	cedulaCliente int FOREIGN KEY REFERENCES Cliente(cedulaCliente),
 	nombreRutina varchar(30) not null,

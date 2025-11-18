@@ -284,3 +284,41 @@ ALTER COLUMN contrasenia VARCHAR(255);
 DROP PROCEDURE InsertCliente
 DROP PROCEDURE UpdateCliente
 --Eliminar esos 2 procedimietos y volver a correrlos (Ya están actualizados) Gracias
+
+
+CREATE PROCEDURE GetClienteByCedula
+    @CedulaCliente INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- 1) Cliente
+    SELECT 
+        c.idCliente,
+        c.cedulaCliente,
+        c.nombre,
+        c.primerApellido,
+        c.segundoApellido,
+        c.fechaNacimiento,
+        c.correo,
+        c.contrasenia,
+        c.telefono,
+        c.fechaRegistro,
+        c.rutaFotoCliente
+    FROM dbo.Cliente AS c
+    WHERE c.cedulaCliente = @CedulaCliente;
+
+    -- Membresías del cliente
+    SELECT 
+        mb.idMembresia,
+        mb.cedulaCliente,
+        mb.precio,
+        mb.fechaInicio,
+        mb.fechaFin,
+        mb.estado,
+        mb.cedulaEntrenador
+    FROM dbo.Membresia AS mb
+    WHERE mb.cedulaCliente = @CedulaCliente
+    ORDER BY mb.fechaInicio DESC;
+END
+GO
